@@ -1,0 +1,20 @@
+from django.contrib import admin
+from django.urls import path, include
+
+from django.conf.urls import url
+from django.urls import include, re_path
+
+from mysite.views import HomeView
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    #url(r'^admin/', include(admin.site.urls)),
+    #path('/', HomeView.as_view(), name='home'),
+
+    path('bookmark/', include('bookmark.urls')),
+    path('blog/', include('blog.urls')),
+    #url(r'^bookmark/', include('bookmark.urls')),
+    #url(r'^blog/', include('blog.urls')),
+
+    url(r'^$', HomeView.as_view(), name='home'),
+]
